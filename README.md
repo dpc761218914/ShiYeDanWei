@@ -6,7 +6,7 @@
 ###二、项目描述
 **模块：**1、Moment.js node主要用户判断当前的时间。   2、Express node的快速web开发框架。  3、mongoose MongoDB的ORM模块，4、superagent  是nodejs里一个非常方便的客户端请求代理模块，当你想处理get,post,put,delete,head请求时,你就应该想起该用它了。5、cheerio 服务端的jquery，在服务端分析网页并提取相应的信息。 6、superagent-charset 爬去数据的时候注意爬取出数据的编码，7、schedule 定时任务模块，例如这里我每隔一小时爬取网站信息。7、eventproxy 并发控制模块，并发爬虫效率更高，同时node.js是异步的。
 
-**实现思路：**分析事业单位招聘网：http://www.shiyebian.net/jiangxi/ 该链接展示全部江西事业单位招聘信息，如果查看点击南昌地区：http://www.shiyebian.net/jiangxi/nanchang/，我们可以看出每个城市的招聘只要加城市名就好了。这样我们就可以分类把招聘信息爬取下来。
+**实现思路：**分析事业单位招聘网：http://www.shiyebian.net/jiangxi/ 该链接展示全部江西事业单位招聘信息，如果查看点击南昌地区：http://www.shiyebian.net/jiangxi/nanchang/， 我们可以看出每个城市的招聘只要加城市名就好了。这样我们就可以分类把招聘信息爬取下来。
 
 ###三、项目截图
 项目启动部署后，爬虫自动每一个小时运行一次~~~
@@ -24,7 +24,7 @@
 
 
 ###四、部分代码
-- 4.1、首先分析网页http://www.shiyebian.net/jiangxi/nanchang/的源代码，我们可以分析出具体的招聘信息在ul标签class为lie1下，同时em标签存储了日期，a标签的href存储了招聘详细内容的超链接，而a标签存储了标题。我们可以将其取出并存入到二维数组中。
+- 4.1、首先分析网页http://www.shiyebian.net/jiangxi/nanchang/  的源代码，我们可以分析出具体的招聘信息在ul标签class为lie1下，同时em标签存储了日期，a标签的href存储了招聘详细内容的超链接，而a标签存储了标题。我们可以将其取出并存入到二维数组中。
 ![分析招聘信息html.png](http://upload-images.jianshu.io/upload_images/2227968-e247d24165e1377c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 然后我们在分析其招聘信息的详情页面，我们可以发现招聘的详情存在div的class为zhengwen的标签中，同时div的class为info中有招聘发布的详细时间，我们可以将它获取下来（因为前面的列表页面只有日记，没有时间，我们不好对它排序），
 ![招聘详情页面.png](http://upload-images.jianshu.io/upload_images/2227968-de6a7e1a4e9a081d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
