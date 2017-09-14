@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中华养生疗法所有分页页面</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="row" style="margin-top: 50px">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h3 style="margin-bottom: 30px">获取全部养生疗法，并进行入库操作</h3>
+        <div class="alert alert-warning" role="alert">
+            <strong>提示!</strong> <br>
+            粘贴该页测试链接，并选择分类，然后点击查询...
+            <p>不同的分类用不同的Value记录，而like和watch默认值设置为0</p>
+        </div>
+        <input type="text" class="form-control" id="tv_link" placeholder="请输入经典语录单条链接"></br>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" value="1" checked>
+                经典语录
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios"  value="2">
+                名人名言
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios"  value="3">
+                爱情语录
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" value="3">
+                励志语录
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios"  value="4">
+                搞笑语录
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="Radios6" value="5">
+                经典台词
+            </label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="getData()">点击查询</button>
+        <!-- 为 地址列表 准备一个具备大小（宽高）的 DOM -->
+        <div class="jumbotron" id="main" style="margin-top: 20px">
+        </div>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+<script>
+    function getData(){
+        var url = $("#tv_link").val(); //获取链接
+        var type = $("input[name='optionsRadios']:checked").val(); //获取分类
+        $.post("/get_YangSheng_AllPage",{url:url,type:type},function(result){
+            $("#main").html(result);
+        });
+    }
+</script>
+</body>
+</html>
